@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.raymond</groupId>
-    <artifactId>SpringMyBatisDemo</artifactId>
+    <artifactId>mygames</artifactId>
 	<packaging>war</packaging>
     <version>1.0.0</version>
 
@@ -58,7 +58,7 @@
     </repositories>
 
     <build>
-        <finalName>SpringMyBatisDemo</finalName>
+        <finalName>mygames</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -76,7 +76,7 @@
                 <configuration>
                     <uriEncoding>UTF-8</uriEncoding>
                     <port>8084</port>
-                    <path>/SpringMyBatisDemo</path>
+                    <path>/mygames</path>
                     <systemProperties>
                         <java.io.tmpdir>${project.build.directory}/tomcat</java.io.tmpdir>
                     </systemProperties>

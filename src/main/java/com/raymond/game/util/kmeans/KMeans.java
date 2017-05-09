@@ -1,4 +1,6 @@
 package com.raymond.game.util.kmeans;
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class KMeans {
     private List<Point> points;
     private List<Cluster> clusters;
 
+    private List<List<Point>> pointsList;
+    private List<List<Cluster>> clustersList;
+
     public List<Point> getPoints() {
         return points;
     }
@@ -42,9 +47,27 @@ public class KMeans {
         this.clusters = clusters;
     }
 
+    public List<List<Point>> getPointsList() {
+        return pointsList;
+    }
+
+    public void setPointsList(List<List<Point>> pointsList) {
+        this.pointsList = pointsList;
+    }
+
+    public List<List<Cluster>> getClustersList() {
+        return clustersList;
+    }
+
+    public void setClustersList(List<List<Cluster>> clustersList) {
+        this.clustersList = clustersList;
+    }
+
     public KMeans() {
         this.points = new ArrayList();
         this.clusters = new ArrayList();
+        this.pointsList=new ArrayList<>();
+        this.clustersList=new ArrayList<>();
     }
 
     public static void main(String[] args) {
@@ -69,6 +92,9 @@ public class KMeans {
 
         //Print Initial state
         plotClusters();
+
+        pointsList.add(clonePointList(points));
+        clustersList.add(Lists.newArrayList(clusters));
     }
 
     private void plotClusters() {
@@ -113,6 +139,8 @@ public class KMeans {
             if(distance == 0) {
                 finish = true;
             }
+            pointsList.add(clonePointList(points));
+            clustersList.add(Lists.newArrayList(clusters));
         }
     }
 
@@ -173,5 +201,28 @@ public class KMeans {
                 centroid.setY(newY);
             }
         }
+    }
+
+    public static List<Point> clonePointList(List<Point> list) {
+        List<Point> clone = new ArrayList<Point>(list.size());
+        for (Point item : list){
+            Point point=new Point();
+            point.setCluster(item.getCluster());
+            point.setX(item.getX());
+            point.setY(item.getY());
+            clone.add(point);
+        }
+        return clone;
+    }
+
+    public static List<Cluster> cloneClusterList(List<Cluster> list) {
+        List<Cluster> clone = new ArrayList<Cluster>(list.size());
+        for (Cluster item : list){
+            Cluster cluster=new Cluster();
+            cluster.setCentroid(item.getCentroid());
+            cluster.setPoints(clonePointList(item.getPoints()));
+            clone.add(cluster);
+        }
+        return clone;
     }
 }

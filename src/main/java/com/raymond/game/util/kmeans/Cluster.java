@@ -11,6 +11,8 @@ public class Cluster {
     public Point centroid;
     public int id;
 
+    public Cluster() {}
+
     //Creates a new Cluster
     public Cluster(int id) {
         this.id = id;

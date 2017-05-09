@@ -1,6 +1,8 @@
 package com.raymond.game.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.raymond.game.service.KMeansService;
+import com.raymond.game.util.kmeans.KMeans;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,9 +39,16 @@ public class KMeansController {
      * @param id
      * @return
      */
-    @RequestMapping("/result")
+    @RequestMapping(value ="/result",produces = "application/json")
     @ResponseBody
     public String getResult(@RequestParam(value = "id", required = true) String id) {
-        return kMeansService.getResult(id);
+        KMeans kmeans = new KMeans();
+        kmeans.init();
+        kmeans.calculate();
+        kmeans.getClustersList();
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("pointsList",kmeans.getPointsList());
+        jsonObject.put("clustersList",kmeans.getClustersList());
+        return jsonObject.toJSONString();
     }
 }

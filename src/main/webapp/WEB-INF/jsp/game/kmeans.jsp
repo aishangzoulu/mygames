@@ -27,7 +27,7 @@
                         });
                     });
                     $("#next").on('click', function () {
-                        $("#main").html();
+                        $("#plotDiv").html();
                         stepIndex++;
                         var seriesList=createSeriesList(pointsList,clustersList,stepIndex);
                         console.info(seriesList);
@@ -36,6 +36,7 @@
                 });
 
                 function createSeriesList(pointsList,clustersList,stepIndex){
+                    $("#stepText").html("总共迭代"+clustersList.length+"次,当前第"+stepIndex+"次");
                     var data0=[];
                     var data1=[];
                     var data2=[];
@@ -84,10 +85,9 @@
                 }
 
                 function createChart(series) {
-                    $("#main").highcharts( {
+                    $("#plotDiv").highcharts( {
                         chart: {
-                            type: 'scatter',
-                            zoomType: 'xy'
+                            type: 'scatter'
                         },
                         title: {
                             text: 'K-Means聚类算法'
@@ -96,18 +96,28 @@
                             text: 'random data'
                         },
                         xAxis: {
+                            height: 300,
+                            width: 300,
                             title: {
-                                enabled: true,
-                                text: 'Width (cm)'
+                                text: 'X'
                             },
+                            min: 0,
+                            max: 12,
                             startOnTick: true,
                             endOnTick: true,
                             showLastLabel: true
                         },
                         yAxis: {
+                            height: 300,
+                            width: 300,
                             title: {
-                                text: 'Height (cm)'
-                            }
+                                text: 'Y'
+                            },
+                            min: 0,
+                            max: 12,
+                            startOnTick: true,
+                            endOnTick: true,
+                            showLastLabel: true
                         },
                         legend: {
                             layout: 'vertical',
@@ -150,9 +160,7 @@
             });
         </script>
         <style type="text/css">
-            #main {
-                width: 80%;
-            }
+
         </style>
     </tiles:putAttribute>
     <tiles:putAttribute name="body">
@@ -171,7 +179,7 @@
         </div>
         <input type="hidden" id="result"/>
 
-        <div class="container" id="main">
+        <div class="container" id="plotDiv">
 
         </div>
     </tiles:putAttribute>

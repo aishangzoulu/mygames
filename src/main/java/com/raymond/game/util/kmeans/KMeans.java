@@ -20,7 +20,7 @@ public class KMeans {
     //Number of Clusters. This metric should be related to the number of points
     private int NUM_CLUSTERS = 3;
     //Number of Points
-    private int NUM_POINTS = 15;
+    private int NUM_POINTS = 150;
     //Min and Max X and Y
     private static final int MIN_COORDINATE = 0;
     private static final int MAX_COORDINATE = 10;

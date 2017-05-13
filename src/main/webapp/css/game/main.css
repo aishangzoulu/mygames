@@ -1,0 +1,59 @@
+.decision-tree .node {
+    cursor: pointer;
+}
+.decision-tree .node.leaf{
+    cursor: auto;
+}
+.decision-tree .node rect {
+    stroke-width: 2px;
+    stroke: #999;
+    stroke-dasharray: 4,2;
+    rx: 8px;
+    ry: 8px;
+}
+.decision-tree .node.leaf rect{
+    fill: #7f9e07;
+    stroke: #7f9e07;
+    stroke-width: 2px;
+    stroke-dasharray: initial;
+}
+
+.decision-tree .node text {
+    font-size: 12px;
+    fill: #fff;
+}
+
+.decision-tree path.link {
+    fill: none;
+    stroke: #ccc;
+    transition: .2s ease-in-out;
+}
+
+.decision-tree path.link.hover,
+.decision-tree .node.hover rect{
+    stroke: #333;
+}
+
+.prediction-panel{
+    width: 150px;
+    position: absolute;
+    min-height: 100px;
+    top: 0;
+    left: 840px;
+    font-size: 12px;
+}
+.prediction-panel .title{
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0;
+}
+.prediction-panel .feature{
+    border-radius: 16px;
+    padding: 9px 15px;
+    color: #fff;
+    background-color: #7f9e07;
+}
+.prediction-panel .fork{
+    text-align: center;
+    padding: 11px 0;
+}

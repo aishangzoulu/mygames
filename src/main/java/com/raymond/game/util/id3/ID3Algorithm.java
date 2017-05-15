@@ -1,6 +1,5 @@
 package com.raymond.game.util.id3;
 
-import javax.xml.soap.Node;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +12,7 @@ import static com.raymond.game.util.id3.ID3Algorithm.stringBuilder;
  * Created by Raymond on 2017/3/14.
  * 1.calculate total entropy of the set
  * 2.calculate gain entropy of every attribute and choose the max one
- * 3.divide the set into sub-sets by the attribute's different value
+ * 3.divide the set into sub-sets by the attribute's value
  * 4.go back to 1 till the set is empty
  */
 public class ID3Algorithm {
